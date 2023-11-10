@@ -1,5 +1,6 @@
 from datetime import *
 
+
 class ReminderDateTime:
 
     def __init__(self):
@@ -10,3 +11,29 @@ class ReminderDateTime:
         self.min = 0
         self.sec = 0
 
+    def set_datetime(self, date, time):
+        """
+        setting the datetime for a new reminder
+        :param date: month, day, year
+        :param time: hours, min, sec
+        :return: None
+        """
+        pass
+
+    def change_datetime(self, date, time):
+        """
+        changing the datetime for an existing reminder
+        :param date: month, day, year
+        :param time: hours, min, sec
+        :return: None
+        """
+        pass
+
+    def remove_datetime(self):
+        """
+        removing the datetime for multipurpose uses
+        :param date: month, day, year
+        :param time: hours, min, sec
+        :return: None
+        """
+        pass
