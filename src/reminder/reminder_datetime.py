@@ -13,7 +13,7 @@ class ReminderDateTime:
 
     def set_datetime(self, date, time):
         """
-        setting the datetime for a new reminder
+        setting the datetime for a new rem
         :param date: month, day, year
         :param time: hours, min, sec
         :return: None
@@ -22,7 +22,7 @@ class ReminderDateTime:
 
     def change_datetime(self, date, time):
         """
-        changing the datetime for an existing reminder
+        changing the datetime for an existing rem
         :param date: month, day, year
         :param time: hours, min, sec
         :return: None

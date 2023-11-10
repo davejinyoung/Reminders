@@ -8,7 +8,7 @@ class ReminderContent:
 
     def set_task_title(self, task_title):
         """
-        setting the title of the task for new reminder
+        setting the title of the task for new rem
         :param task_title: title of task
         :return: None
         """
@@ -16,7 +16,7 @@ class ReminderContent:
 
     def set_task_desc(self, task_desc):
         """
-        setting the description of the task for new reminder
+        setting the description of the task for new rem
         :param task_desc: description of task
         :return: None
         """
