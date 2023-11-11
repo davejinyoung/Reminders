@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>My Reminders</title>
-    <link href="{{ url_for('static', path='/css/home.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder App</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
 </head>
 <body>
-    <h1>My Webpage</h1>
-    <form action="/action_page.php">
-      <label for="fname">First name:</label>
-      <input type="text" id="fname" name="fname"><br><br>
-      <label for="lname">Last name:</label>
-      <input type="text" id="lname" name="lname"><br><br>
-      <input type="submit" value="Submit">
-    </form>
+
+<h1>Create a New Reminder</h1>
+
+<form id="reminderForm">
+    <label for="reminderText">Reminder:</label>
+    <input type="text" id="reminderText" required>
+    <button type="button" onclick="addReminder()">Add Reminder</button>
+</form>
+
+<div id="reminderList">
+    <!-- Existing reminders will be displayed here -->
+</div>
+
+<h2>Your Reminders</h2>
+
+<script src="/static/script.js"></script>
+
 </body>
 </html>
