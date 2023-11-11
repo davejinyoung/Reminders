@@ -27,9 +27,6 @@ input {
     margin-bottom: 10px;
 }
 
-input[type="checkbox"]:checked + label {
-    opacity: 0.5; /* Set the opacity to make it translucent */
-}
 
 button {
     padding: 8px;
