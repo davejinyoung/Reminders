@@ -1,13 +1,21 @@
-const existingReminders = ["Meeting at 10 AM", "Submit report by 3 PM"];
+// app.js
+
+// Sample data for existing reminders
+const existingReminders = [];
 
 // Function to display existing reminders
 function displayReminders() {
     const reminderList = document.getElementById('reminderList');
     reminderList.innerHTML = ''; // Clear existing list
 
-    existingReminders.forEach(reminder => {
+    existingReminders.forEach((reminder, index) => {
         const reminderItem = document.createElement('div');
-        reminderItem.textContent = reminder;
+        reminderItem.innerHTML = `
+            <label>
+                ${reminder.text}
+                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''}>
+            </label>
+        `;
         reminderList.appendChild(reminderItem);
     });
 }
@@ -17,11 +25,9 @@ function addReminder() {
     const reminderText = document.getElementById('reminderText').value;
 
     if (reminderText.trim() !== '') {
-        existingReminders.push(reminderText);
+        existingReminders.push({ text: reminderText, checked: false });
         displayReminders();
         document.getElementById('reminderText').value = ''; // Clear the input field
     }
 }
 
-// Display existing reminders on page load
-displayReminders();
