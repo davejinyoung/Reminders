@@ -30,4 +30,9 @@ function addReminder() {
         document.getElementById('reminderText').value = ''; // Clear the input field
     }
 }
+document.getElementById('reminderForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    addReminder();
+});
 
+displayReminders();
