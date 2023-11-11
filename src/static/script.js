@@ -1,7 +1,4 @@
-// app.js
-
-// Sample data for existing reminders
-const existingReminders = [];
+var existingReminders = [];
 
 // Function to display existing reminders
 function displayReminders() {
@@ -13,10 +10,13 @@ function displayReminders() {
         reminderItem.innerHTML = `
             <label>
                 ${reminder.text}
-                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''}>
+                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency(${index})">
             </label>
         `;
         reminderList.appendChild(reminderItem);
+        if (reminder.checked) {
+            toggleTransparency(index);
+        }
     });
 }
 
@@ -31,8 +31,13 @@ function addReminder() {
     }
 }
 document.getElementById('reminderForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
     addReminder();
 });
+
+function toggleTransparency(index) {
+    const label = document.querySelector(`#reminderList label:nth-child(${index + 1})`);
+    label.classList.toggle('translucent');
+}
 
 displayReminders();
