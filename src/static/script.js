@@ -10,7 +10,7 @@ function displayReminders() {
         reminderItem.innerHTML = `
             <label>
                 ${reminder.text}
-                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency(${index})">
+                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency('reminder${index}', ${index})">
             </label>
         `;
         reminderList.appendChild(reminderItem);
@@ -25,7 +25,8 @@ function addReminder() {
     const reminderText = document.getElementById('reminderText').value;
 
     if (reminderText.trim() !== '') {
-        existingReminders.push({ text: reminderText, checked: false });
+        const newReminder = { text: reminderText, checked: false };
+        existingReminders.unshift(newReminder);
         displayReminders();
         document.getElementById('reminderText').value = ''; // Clear the input field
     }
@@ -35,9 +36,14 @@ document.getElementById('reminderForm').addEventListener('submit', function(even
     addReminder();
 });
 
-function toggleTransparency(index) {
-    const label = document.querySelector(`#reminderList label:nth-child(${index + 1})`);
-    label.classList.toggle('translucent');
+function toggleTransparency(checkboxId, index) {
+    const checkbox = document.getElementById(checkboxId);
+    if (checkbox) {
+        const label = checkbox.parentElement;
+        if (label) {
+            label.classList.toggle('translucent');
+        }
+    }
 }
 
 displayReminders();
