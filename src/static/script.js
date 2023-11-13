@@ -16,7 +16,6 @@ function displayReminders() {
         if (reminder.checked) {
             toggleTransparency(index, reminderItem.querySelector('input'));
         }
-
         reminderList.appendChild(reminderItem);
     });
 }
@@ -36,6 +35,26 @@ document.getElementById('reminderForm').addEventListener('submit', function(even
     event.preventDefault();
     addReminder();
 });
+
+// function to clear the existing reminder list
+function clearReminderList() {
+    existingReminders = [];
+    displayReminders();
+}
+document.getElementById('left_clear_btn').addEventListener('submit', function(event) {
+    event.preventDefault();
+    clearReminderList();
+});
+
+// function to clear the existing completed reminders list
+function clearCompletedList() {
+    // clear completed reminders list
+}
+document.getElementById('right_clear_btn').addEventListener('submit', function(event) {
+    event.preventDefault();
+    clearCompletedList();
+});
+
 
 function toggleTransparency(index, checkbox) {
     const label = checkbox.parentElement;

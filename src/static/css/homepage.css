@@ -1,15 +1,33 @@
-body {
+.standard {
     color:Black;
     font-size:20px;
     font-family: "Segoe UI";
-    margin: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #reminderList {
-    width: 45%;
     border: 3px solid #ccc;
+    margin-left: 45%
     margin-bottom: 20px;
     padding-bottom: 5px;
+}
+
+#completedList {
+    border: 3px solid #ccc;
+    margin-right: 45%
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+
+.reminderHeader {
+    font-family: "Segoe UI";
+    margin-left: 45%
+}
+
+.completedHeader {
+    font-family: "Segoe UI";
+    margin-left: 45%
 }
 
 #reminderForm {
@@ -19,6 +37,7 @@ body {
 .reminderLabel {
     margin-top: 10px;
     margin-left: 10px;
+    font-family: "Segoe UI";
 }
 
 label {
@@ -49,5 +68,8 @@ button:hover {
     opacity: 0.5; /* You can adjust the opacity value as needed */
 }
 
-.center {
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
 }
