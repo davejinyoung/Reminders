@@ -3,7 +3,6 @@ body {
     font-size:20px;
     font-family: "Segoe UI";
     margin: 25px;
-    text-align: center;
 }
 
 #reminderList {
@@ -14,6 +13,11 @@ body {
 
 #reminderForm {
     margin-top: 50px;
+}
+
+.reminderLabel {
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 label {
@@ -42,4 +46,7 @@ button:hover {
 
 .translucent {
     opacity: 0.5; /* You can adjust the opacity value as needed */
+}
+
+.center {
 }
