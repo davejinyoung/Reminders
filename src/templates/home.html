@@ -15,22 +15,31 @@
             <h1>Create a New Reminder</h1>
             <form id="reminderForm">
                 <label for="reminderText">Reminder:</label>
-                <input type="text" placeholder="Enter Reminder Description" size="35" id="reminderText" required>
+                <input type="text" placeholder="Enter Reminder Description" size="35" id="reminderText">
+                <select class="standard" id="severityRating">
+                    <option>---Severity Rating---</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
                 <button type="button" onclick="addReminder()">Add</button>
             </form>
+
         </div>
         <br><br><br>
-        <h2 class="grid-container">
-            <span class="reminderHeader">Your Reminders</span>
-            <span class="completedHeader">Completed</span>
-        </h2>
         <div class="grid-container">
-            <div id="reminderList"></div>
-            <div id="completedList"></div>
+            <h2 class="reminderHeader">Your Reminders</h2>
+            <h2 class="completedHeader">Completed</h2>
+        </div>
+        <div class="grid-container">
             <button type="button" id="left_clear_btn" onclick="clearReminderList()">Clear</button>
             <button type="button" id="right_clear_btn" onclick="clearCompletedList()">Clear</button>
+            <div id="reminderList"></div>
+            <div id="completedList"></div>
         </div>
-        <script src="/static/script.js"></script>
-
+        <script src="/static/js/priorityQueue.js"></script>
+        <script src="/static/js/script.js"></script>
     </body>
 </html>

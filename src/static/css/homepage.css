@@ -35,26 +35,34 @@
 
 #reminderList {
     border: 3px solid #ccc;
-    margin-left: 45%
     margin-bottom: 20px;
     padding-bottom: 5px;
+    align-self: start;
 }
 
 #completedList {
     border: 3px solid #ccc;
-    margin-right: 45%
     margin-bottom: 20px;
     padding-bottom: 5px;
+    align-self: start;
+}
+
+#left_clear_btn {
+    margin-right: 90%
+}
+
+#right_clear_btn{
+    margin-right: 90%
 }
 
 .reminderHeader {
     font-family: "Segoe UI";
-    margin-left: 45%
+    text-align: center;
 }
 
 .completedHeader {
     font-family: "Segoe UI";
-    margin-left: 45%
+    text-align: center;
 }
 
 #reminderForm {
