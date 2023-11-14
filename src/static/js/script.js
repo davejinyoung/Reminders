@@ -1,11 +1,13 @@
-var existingReminders = [];
+const existingReminders = new PriorityQueue();
+var completedReminders = [];
 
 // Function to display existing reminders
 function displayReminders() {
+    const descendingOrderReminders = existingReminders.getItemsDescendingOrder();
     const reminderList = document.getElementById('reminderList');
     reminderList.innerHTML = ''; // Clear existing list
 
-    existingReminders.forEach((reminder, index) => {
+    descendingOrderReminders.forEach((reminder, index) => {
         const reminderItem = document.createElement('div');
         reminderItem.innerHTML = `
             <label class="reminderLabel" data-reminder-index="${index}">
@@ -20,13 +22,18 @@ function displayReminders() {
     });
 }
 
+function displayCompletedReminders() {
+    console.log("out")
+}
+
 // Function to add a new reminder
 function addReminder() {
     const reminderText = document.getElementById('reminderText').value;
+    const severityRating = document.getElementById('severityRating').value;
 
     if (reminderText.trim() !== '') {
-        const newReminder = { text: reminderText, checked: false };
-        existingReminders.unshift(newReminder);
+        const newReminder = { text: reminderText, severity: severityRating, checked: false };
+        existingReminders.add(newReminder);
         displayReminders();
         document.getElementById('reminderText').value = ''; // Clear the input field
     }
@@ -38,17 +45,18 @@ document.getElementById('reminderForm').addEventListener('submit', function(even
 
 // function to clear the existing reminder list
 function clearReminderList() {
-    existingReminders = [];
+    existingReminders.removeAll();
     displayReminders();
 }
 document.getElementById('left_clear_btn').addEventListener('submit', function(event) {
     event.preventDefault();
-    clearReminderList();
+    clearCompletedList();
 });
 
 // function to clear the existing completed reminders list
 function clearCompletedList() {
-    // clear completed reminders list
+    completedReminders = [];
+    displayCompletedReminders(); // change this later
 }
 document.getElementById('right_clear_btn').addEventListener('submit', function(event) {
     event.preventDefault();
