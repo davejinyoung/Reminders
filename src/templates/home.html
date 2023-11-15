@@ -27,9 +27,9 @@
                 </select>
                 <label for="datetime">Date and Time:</label>
                 <input type="datetime-local" id="datetime"><br>
-                <button type="button" onclick="addReminder()">Add</button>
+                <button class="inputButton" type="button" onclick="addReminder()">Add</button>
+                <input class="inputButton" type="reset" value="Reset">
             </form>
-
         </div>
         <br><br><br>
         <div class="grid-container">
@@ -37,8 +37,8 @@
             <h2 class="completedHeader">Completed</h2>
         </div>
         <div class="grid-container">
-            <button type="button" id="left_clear_btn" onclick="clearReminderList()">Clear</button>
-            <button type="button" id="right_clear_btn" onclick="clearCompletedList()">Clear</button>
+            <button class="inputButton" type="button" id="left_clear_btn" onclick="clearReminderList()">Clear</button>
+            <button class="inputButton" type="button" id="right_clear_btn" onclick="clearCompletedList()">Clear</button>
             <div id="reminderList"></div>
             <div id="completedList"></div>
         </div>

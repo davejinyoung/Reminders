@@ -110,4 +110,12 @@ class PriorityQueue {
         const sortedCopy = copyHeap.sort((a, b) => b.severity - a.severity);
         return sortedCopy;
     }
+
+    getByIndex(index) {
+        if (index < 0 || index >= this.heap.length) {
+            // Index out of bounds
+            return null;
+        }
+        return this.heap[index];
+    }
 }

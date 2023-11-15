@@ -1,9 +1,10 @@
-const existingReminders = new PriorityQueue();
+const existingRemindersPQ = new PriorityQueue();
+existingRemindersList = [];
 var completedReminders = [];
 
 // Function to display existing reminders
 function displayReminders() {
-    const descendingOrderReminders = existingReminders.getItemsDescendingOrder();
+    const descendingOrderReminders = existingRemindersPQ.getItemsDescendingOrder();
     const reminderList = document.getElementById('reminderList');
     reminderList.innerHTML = ''; // Clear existing list
 
@@ -11,7 +12,7 @@ function displayReminders() {
         const reminderItem = document.createElement('div');
         reminderItem.innerHTML = `
             <label class="reminderLabel" data-reminder-index="${index}">
-                ${reminder.text}
+                ${reminder.text + ", Severity: " + reminder.severity +  ", Date & Time: " + reminder.datetime}
                 <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency(${index}, this)">
             </label>
         `;
@@ -30,12 +31,16 @@ function displayCompletedReminders() {
 function addReminder() {
     const reminderText = document.getElementById('reminderText').value;
     const severityRating = document.getElementById('severityRating').value;
+    const datetime = document.getElementById('datetime').value;
 
     if (reminderText.trim() !== '') {
-        const newReminder = { text: reminderText, severity: severityRating, checked: false };
-        existingReminders.add(newReminder);
+        const newReminder = { text: reminderText, severity: severityRating, datetime: datetime, checked: false };
+        existingRemindersPQ.add(newReminder);
         displayReminders();
         document.getElementById('reminderText').value = ''; // Clear the input field
+        document.getElementById('severityRating').value = ''; // Clear the input field
+        document.getElementById('datetime').value = ''; // Clear the input field
+        console.log(newReminder);
     }
 }
 document.getElementById('reminderForm').addEventListener('submit', function(event) {
@@ -45,7 +50,7 @@ document.getElementById('reminderForm').addEventListener('submit', function(even
 
 // function to clear the existing reminder list
 function clearReminderList() {
-    existingReminders.removeAll();
+    existingRemindersPQ.removeAll();
     displayReminders();
 }
 document.getElementById('left_clear_btn').addEventListener('submit', function(event) {
@@ -66,8 +71,9 @@ document.getElementById('right_clear_btn').addEventListener('submit', function(e
 
 function toggleTransparency(index, checkbox) {
     const label = checkbox.parentElement;
+    console.log(index);
     label.classList.toggle('translucent');
-    existingReminders[index].checked = checkbox.checked;
+    existingRemindersPQ.getByIndex(index).checked = checkbox.checked;
 }
 
 displayReminders();

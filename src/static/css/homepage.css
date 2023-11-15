@@ -21,7 +21,7 @@
 }
 
 .topnav a.active {
-    background-color: #04AA6D;
+    background-color: #307391;
     color: white;
 }
 
@@ -86,16 +86,16 @@ input {
     margin-bottom: 10px;
 }
 
-
-button {
+.inputButton {
+    font-size: 12px;
     padding: 8px;
-    background-color: #4caf50;
+    background-color: #307391;
     color: white;
     border: none;
     cursor: pointer;
 }
 
-button:hover {
+.inputButton:hover {
     background-color: #45a049;
 }
 
