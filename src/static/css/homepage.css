@@ -37,23 +37,16 @@
     border: 3px solid #ccc;
     margin-bottom: 20px;
     padding-bottom: 5px;
-    align-self: start;
+    align-self: center;
 }
 
 #completedList {
     border: 3px solid #ccc;
     margin-bottom: 20px;
     padding-bottom: 5px;
-    align-self: start;
+    align-self: center;
 }
 
-#left_clear_btn {
-    margin-right: 90%
-}
-
-#right_clear_btn{
-    margin-right: 90%
-}
 
 .reminderHeader {
     font-family: "Segoe UI";
@@ -88,11 +81,13 @@ input {
 
 .inputButton {
     font-size: 12px;
-    padding: 8px;
+    padding: 8px 15px;
+    display: inline-block;
     background-color: #307391;
     color: white;
     border: none;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
 .inputButton:hover {
@@ -107,4 +102,8 @@ input {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+}
+
+.grid-item {
+    display: inline-block;
 }
