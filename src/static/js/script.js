@@ -11,17 +11,17 @@ function displayReminders() {
         reminderItem.innerHTML = `
             <label class="reminderLabel" data-reminder-index="${index}">
                 ${reminder.getText() + ", Severity: " + reminder.getSeverity() +  ", Date & Time: " + reminder.getDatetime()}
-                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency(${index}, this)">
+                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency(${index}, this, existingRemindersList)">
             </label>
         `;
         if (reminder.getChecked()) {
-            toggleTransparency(index, reminderItem.querySelector('input'), false);
+            toggleTransparency(index, reminderItem.querySelector('input'), existingRemindersList, false);
         }
         reminderList.appendChild(reminderItem);
     });
 }
 
-function displayCompletedReminders(index) {
+function displayCompletedReminders() {
     const reminderList = document.getElementById('completedList');
     reminderList.innerHTML = ''; // Clear existing list
 
@@ -30,11 +30,11 @@ function displayCompletedReminders(index) {
         reminderItem.innerHTML = `
             <label class="reminderLabel" data-reminder-index="${index}">
                 ${reminder.getText() + ", Severity: " + reminder.getSeverity() +  ", Date & Time: " + reminder.getDatetime()}
-                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency(${index}, this)">
+                <input type="checkbox" id="reminder${index}" ${reminder.checked ? 'checked' : ''} onclick="toggleTransparency(${index}, this, completedRemindersList)">
             </label>
         `;
         if (reminder.getChecked()) {
-            toggleTransparency(index, reminderItem.querySelector('input'), false);
+            toggleTransparency(index, reminderItem.querySelector('input'), completedRemindersList, false);
         }
         reminderList.appendChild(reminderItem);
     });
@@ -83,7 +83,7 @@ document.getElementById('right_clear_btn').addEventListener('click', function(ev
 
 function selectAllReminders(){
     existingRemindersList.forEach((reminder, index) => {
-        existingRemindersList[index].updateChecked();
+        existingRemindersList[index].updateCheckedTrue();
     });
     displayReminders();
 }
@@ -93,7 +93,10 @@ document.getElementById('left_select_btn').addEventListener('click', function(ev
 });
 
 function selectAllCompletedReminders() {
-    completedRemindersList = [];
+    completedRemindersList.forEach((reminder, index) => {
+        completedRemindersList[index].updateCheckedTrue();
+    });
+    displayReminders();
     displayCompletedReminders(); // change this later
 }
 document.getElementById('right_select_btn').addEventListener('click', function(event) {
@@ -102,9 +105,11 @@ document.getElementById('right_select_btn').addEventListener('click', function(e
 });
 
 function moveToComplete() {
-
     buff = existingRemindersList.filter(reminder => reminder.getChecked());
     existingRemindersList = existingRemindersList.filter(reminder => !reminder.getChecked());
+    buff.forEach((reminder, index) => {
+        buff[index].updateChecked();
+    });
     completedRemindersList = completedRemindersList.concat(buff);
     displayReminders();
     displayCompletedReminders();
@@ -115,11 +120,12 @@ document.getElementById('move_to_complete').addEventListener('click', function(e
 });
 
 function moveToReminder() {
+    buff = completedRemindersList.filter(reminder => reminder.getChecked());
     completedRemindersList = completedRemindersList.filter(reminder => !reminder.getChecked());
-    existingRemindersList.push(completedRemindersList);
-
-    console.log(existingRemindersList);
-
+    buff.forEach((reminder, index) => {
+        buff[index].updateChecked();
+    });
+    existingRemindersList = existingRemindersList.concat(buff);
     displayReminders();
     displayCompletedReminders();
 }
@@ -128,11 +134,11 @@ document.getElementById('move_to_reminder').addEventListener('click', function(e
     moveToReminder();
 });
 
-function toggleTransparency(index, checkbox, update=true) {
+function toggleTransparency(index, checkbox, reminderList, update=true) {
     const label = checkbox.parentElement;
     label.classList.toggle('translucent');
     if(update){
-        existingRemindersList[index].updateChecked();
+        reminderList[index].updateChecked();
     }
 }
 

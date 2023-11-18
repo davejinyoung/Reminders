@@ -18,6 +18,10 @@ class Reminder {
         this.checked = !this.checked;
     }
 
+    updateCheckedTrue(){
+        this.checked = true;
+    }
+
     getDatetime(){
         return this.datetime;
     }
