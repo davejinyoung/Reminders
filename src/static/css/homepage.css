@@ -33,20 +33,14 @@
     margin-right: auto;
 }
 
-#reminderList {
-    border: 3px solid #ccc;
+.listFormat {
+    resize: vertical;
+    padding:15px;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+    border-radius:10px;
     margin-bottom: 20px;
-    padding-bottom: 5px;
     align-self: center;
 }
-
-#completedList {
-    border: 3px solid #ccc;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
-    align-self: center;
-}
-
 
 .reminderHeader {
     font-family: "Segoe UI";
@@ -60,6 +54,7 @@
 
 #reminderForm {
     margin-top: 50px;
+    margin-left: 15px;
 }
 
 .reminderLabel {
@@ -88,10 +83,11 @@ input {
     border: none;
     cursor: pointer;
     margin-bottom: 5px;
+    border-radius:3px;
 }
 
 .inputButton:hover {
-    background-color: #45a049;
+    background-color: #244452;
 }
 
 .translucent {
@@ -102,8 +98,35 @@ input {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+    margin-left:15px;
+    margin-right:15px;
 }
 
 .grid-item {
     display: inline-block;
+}
+
+textarea {
+  margin-bottom: 10px;
+  width:50%;
+  resize: vertical;
+  padding:15px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+  height:30px;
+  border-radius:10px;
+}
+
+select {
+  margin-bottom: 10px;
+  width: 15%;
+  padding:5px;
+  border-radius:10px;
+}
+
+#datetime {
+  margin-bottom: 10px;
+  width: 14%;
+  padding:5px;
+  border-radius:10px;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
             <h1>Create a New Reminder</h1>
             <form id="reminderForm">
                 <label for="reminderText">Reminder:</label>
-                <input type="text" placeholder="Enter Reminder Description" size="35" id="reminderText">
+                <textarea placeholder="Enter Reminder Description" rows="4" cols="50" id="reminderText" required></textarea>
                 <label for="severityRating">Severity Rating:</label>
                 <select class="standard" id="severityRating">
                     <option>---Severity Rating---</option>
@@ -25,7 +25,7 @@
                     <option>4</option>
                     <option>5</option>
                 </select>
-                <label for="datetime">Date and Time:</label>
+                <label class="standard" for="datetime">Date and Time:</label>
                 <input type="datetime-local" id="datetime"><br>
                 <button class="inputButton" type="button" onclick="addReminder()">Add</button>
                 <input class="inputButton" type="reset" value="Reset">
@@ -41,13 +41,13 @@
                 <button class="inputButton" type="button" id="left_select_btn" onclick="">Select All</button>
                 <button class="inputButton" type="button" id="left_clear_btn">Clear Selected</button>
                 <button class="inputButton" type="button" id="move_to_complete" onclick="">Move to Complete</button>
-                <div id="reminderList"></div>
+                <div class="listFormat" id="reminderList"></div>
             </div>
             <div class="grid-item">
                 <button class="inputButton" type="button" id="right_select_btn">Select All</button>
                 <button class="inputButton" type="button" id="right_clear_btn">Clear Selected</button>
                 <button class="inputButton" type="button" id="move_to_reminder" onclick="">Move to Reminders</button>
-                <div id="completedList"></div>
+                <div class="listFormat" id="completedList"></div>
             </div>
         </div>
         <script src="/static/js/Reminder.js"></script>
